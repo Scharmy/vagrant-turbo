@@ -16,11 +16,11 @@ class PlacesController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
-    redirect_to root_path
   end
 
   def show
     @place = Place.find(params[:id])
+    @google_api_key = Figaro.load['GEOCODER_API_KEY']
   end
 
   def edit
@@ -51,7 +51,6 @@ class PlacesController < ApplicationController
     if @place.user != current_user
       return render plain: 'Not Allowed', status: :forbidden
     end
-
     @place.destroy
     redirect_to root_path
   end
@@ -59,6 +58,6 @@ class PlacesController < ApplicationController
   private
 
   def place_params
-    params.require(:place).permit(:name, :description, :address)
+    params.require(:place).permit(:name, :description, :address, :latitude, :longitude)
   end
 end

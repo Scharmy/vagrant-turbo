@@ -21,10 +21,12 @@
       }
     </script>
     <script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD46T7Oh1Tf2rPiZmM93z_kHSFXpj-bf0M&callback=initMap">
+      src="https://maps.googleapis.com/maps/api/js?key=<%= @google_api_key %>&callback=initMap">
     </script>
     <div id="map"></div>
   <% end %>
+
+  <br />
 
   <div class="float-right">
     <% if current_user && current_user == @place.user %>

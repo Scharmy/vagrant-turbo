@@ -77,3 +77,5 @@ end
 ## Gemfile for Rails 3+, Sinatra, and Merb
 gem 'will_paginate', '~> 3.1.7'
 gem 'will_paginate-bootstrap' 
+
+gem 'carrierwave', '~> 1.0'

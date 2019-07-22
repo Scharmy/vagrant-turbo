@@ -37,7 +37,7 @@
 </div>
 
 <div class="col-10 offset-1">
-  <!-- Button trigger modal -->
+  <!-- Comment Button trigger modal -->
   <button type="button" class="btn btn-primary btn-lg float-right" data-toggle="modal" data-target="#myModal">
     Add a comment
   </button>
@@ -45,7 +45,7 @@
 
 <div class="clear"></div>
 
-<!-- Modal -->
+<!-- Comment Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -71,7 +71,7 @@
 
 
 <div class="col-10 offset-1">
-  <!-- Button trigger modal -->
+  <!-- Photo Button trigger modal -->
   <button type="button" class="btn btn-primary btn-lg float-left" data-toggle="modal" data-target="#photoModal">
     Add a photo
   </button>
@@ -79,7 +79,7 @@
 
 <div class="clear"></div>
 
-<!-- Modal -->
+<!-- Photo Modal -->
 <div class="modal fade" id="photoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -90,21 +90,26 @@
         <h4 class="modal-title" id="myModalLabel">Add a photo</h4>
       </div>
       <%= simple_form_for @photo, url: place_photos_path(@place) do |f| %>
-        <% @place.photos.each do |photo| %>
-          <div class="modal-body">
-            <%= f.input :caption %>
-            <%= f.input :picture %>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <%= f.submit "Add a Photo", class: 'btn btn-primary' %>
-          </div>
-        <% end %>
+        <div class="modal-body">
+          <%= f.input :caption %>
+          <%= f.input :picture %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <%= f.submit "Add a Photo", class: 'btn btn-primary' %>
+        </div>
       <% end %>
     </div>
   </div>
 </div>
 
+<div class="col-12 col-sm-8">
+  <% @place.photos.each do |photo| %>
+      <% if photo.picture.present? %>
+          <%= image_tag photo.picture.url %>
+      <% end %>
+  <% end %>
+</div>
 
 <h1>Comments</h1>
 
@@ -121,3 +126,4 @@
     </div>>
   <% end %>
 </div>
+

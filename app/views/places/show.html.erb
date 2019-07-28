@@ -36,7 +36,11 @@
   </div>
 </div>
 
-<div class="col-10 offset-1">
+<div class="col-10 offset-1 button-wrapper">
+  <!-- Photo Button trigger modal -->
+  <button type="button" class="btn btn-primary btn-lg float-left" data-toggle="modal" data-target="#photoModal">
+    Add a photo
+  </button>
   <!-- Comment Button trigger modal -->
   <button type="button" class="btn btn-primary btn-lg float-right" data-toggle="modal" data-target="#myModal">
     Add a comment
@@ -67,13 +71,6 @@
       <% end %>
     </div>
   </div>
-</div>
-
-<div class="col-10 offset-1">
-  <!-- Photo Button trigger modal -->
-  <button type="button" class="btn btn-primary btn-lg float-left" data-toggle="modal" data-target="#photoModal">
-    Add a photo
-  </button>
 </div>
 
 <div class="clear"></div>
@@ -112,9 +109,9 @@
           <b><%= comment.humanized_rating %></b> -
         <% end %>
         <%= comment.message %>
-        <small><%= comment.user.email %></small>>
-      </blockquote>>
-    </div>>
+        <small><%= comment.user.email %></small>
+      </blockquote>
+    </div>
   <% end %>
 </div>
 
@@ -122,7 +119,7 @@
   <% @place.photos.each do |photo| %>
       <% if photo.picture.present? %>
         <div class="upld-photo">
-          <%= image_tag photo.picture.url %>
+          <%= image_tag photo.picture.url, class: 'cmt-img' %>
         </div>
         <div class="photo-caption">
           <%= photo.caption %>
